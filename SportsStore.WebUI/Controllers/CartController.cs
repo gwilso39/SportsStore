@@ -38,6 +38,7 @@ namespace SportsStore.WebUI.Controllers
             }
             return RedirectToAction("Index", new { returnUrl });
         }
+
         public RedirectToRouteResult RemoveFromCart(Cart cart, int productId, string returnUrl)
         {
             Product product = repository.Products
@@ -48,6 +49,11 @@ namespace SportsStore.WebUI.Controllers
                 cart.RemoveLine(product);
             }
             return RedirectToAction("Index", new { returnUrl });
+        }
+
+        public PartialViewResult Summary(Cart cart)
+        {
+            return PartialView(cart);
         }
     }
 }
